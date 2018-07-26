@@ -109,7 +109,7 @@ error_page {{ k }} {{ v }};
   # CS184 requires uploads of up to 4MB for submitting screenshots.
   # CMS requires larger value for course assest, values provided
   # via hiera.
-  client_max_body_size 4M;
+  client_max_body_size 40M;
 
   rewrite ^(.*)/favicon.ico$ /static/images/favicon.ico last;
 
@@ -200,7 +200,7 @@ error_page {{ k }} {{ v }};
   # Need a separate location for the image uploads endpoint to limit upload sizes
   location ~ ^/api/profile_images/[^/]*/[^/]*/upload$ {
     try_files $uri @proxy_to_lms_app;
-    client_max_body_size {{ EDXAPP_PROFILE_IMAGE_MAX_BYTES + 1000 }};
+    client_max_body_size 10M;
   }
 
   location /notifier_api {

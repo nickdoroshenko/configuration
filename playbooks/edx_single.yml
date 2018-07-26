@@ -20,7 +20,6 @@
       SWAPFILE_SIZE: 8GB
     - role: nginx
       nginx_sites:
-      - certs
       - cms
       - lms
       - forum
@@ -40,7 +39,6 @@
     - role: elasticsearch
     - forum
     - role: notifier
-    - certs
     - role: newrelic
       when: COMMON_ENABLE_NEWRELIC
     - role: datadog
